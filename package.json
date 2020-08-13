@@ -1,0 +1,22 @@
+{
+  "name": "mf.messenger.praktikum.yandex",
+  "version": "1.0.0",
+  "description": "Задание выполненное в рамках обучения в яндекс.практикум",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zemskovs/mf.messenger.praktikum.yandex.git"
+  },
+  "author": "Vladimir Zemskov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zemskovs/mf.messenger.praktikum.yandex/issues"
+  },
+  "homepage": "https://github.com/zemskovs/mf.messenger.praktikum.yandex#readme",
+  "devDependencies": {
+    "express": "^4.17.1"
+  }
+}
