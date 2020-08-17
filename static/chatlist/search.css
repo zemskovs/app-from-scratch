@@ -1,0 +1,15 @@
+.search {
+  width: 100%;
+}
+
+.search__input {
+  outline: none;
+  border: none;
+  width: 100%;
+  padding-top: var(--size-xs);
+  padding-right: var(--size-xs);
+  padding-bottom: var(--size-xs);
+  padding-left: var(--size-sm);
+  border-radius: var(--size-xs);
+  background-color: var(--color-bg-primary);
+}

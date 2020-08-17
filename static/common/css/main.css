@@ -60,4 +60,5 @@
 
 body {
   font-family: var(--common-font);
+  font-size: var(--font-size-body);
 }
