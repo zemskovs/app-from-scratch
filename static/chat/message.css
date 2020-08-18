@@ -1,0 +1,25 @@
+.message {
+  position: relative;
+  max-width: 80%;
+}
+
+.message__content {
+  padding: var(--size-lg);
+  border-radius: var(--size-xs);
+}
+
+.message__date {
+  position: absolute;
+  bottom: var(--size-sm);
+  right: var(--size-sm);
+  font-size: var(--font-size-caption);
+  color: var(--color-caption);
+}
+
+.message__content__from {
+  background-color: var(--color-bg-main);
+}
+
+.message__content__to {
+  background-color: var(--color-bg-blue);
+}
