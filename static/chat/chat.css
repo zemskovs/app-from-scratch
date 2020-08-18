@@ -44,10 +44,6 @@
   background-color: var(--color-white);
 }
 
-.right-indent-sm {
-  margin-right: var(--size-sm);
-}
-
 .chat__body {
   display: flex;
   flex-flow: column;
