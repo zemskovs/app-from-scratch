@@ -1,0 +1,35 @@
+.profile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.profile__avatar-size {
+  width: 131px;
+  height: 131px;
+}
+
+.profile__body {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+}
+
+.profile__top {
+  text-align: center;
+}
+
+.profile__mail {
+  padding-bottom: var(--size-sm);
+  border-bottom: var(--border-solid);
+}
+
+.profile__control-links {
+  display: flex;
+  flex-flow: column;
+  width: 100%;
+}
