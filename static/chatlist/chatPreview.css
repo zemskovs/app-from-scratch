@@ -7,14 +7,6 @@
   cursor: pointer;
 }
 
-.chat-preview__left {
-  display: flex;
-}
-
-.chat-preview__img {
-  margin-right: var(--size-sm);
-}
-
 .chat-preview__right {
   display: flex;
   flex-flow: column;
