@@ -12,7 +12,7 @@
 
 .cart__header {
   text-align: center;
-  margin-top: calc(var(--size-xxl) * 2);
+  margin-top: var(--size-xxl);
 }
 
 .cart__footer {
