@@ -1,0 +1,13 @@
+.user {
+  display: flex;
+}
+
+.user__img {
+  margin-right: var(--size-sm);
+}
+
+.user__caption {
+  font-size: var(--font-size-caption);
+  color: var(--color-caption);
+  text-overflow: ellipsis;
+}

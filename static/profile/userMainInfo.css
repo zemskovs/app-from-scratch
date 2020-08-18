@@ -1,0 +1,9 @@
+.user-main-info__item {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.user-main-info__value {
+  color: var(--color-caption);
+}

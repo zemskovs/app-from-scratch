@@ -1,0 +1,14 @@
+.avatar-image {
+  background-color: var(--color-bg-primary);
+  border-radius: 50%;
+}
+
+.avatar-image__preview-size {
+  width: 47px;
+  height: 47px;
+}
+
+.avatar-image__header-size {
+  width: 37px;
+  height: 37px;
+}

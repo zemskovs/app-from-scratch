@@ -1,0 +1,15 @@
+.right-indent-sm {
+  margin-right: var(--size-sm);
+}
+
+.bottom-indent-sm {
+  margin-bottom: var(--size-sm);
+}
+
+.bottom-indent-xl {
+  margin-bottom: var(--size-xl);
+}
+
+.bottom-indent-xxl {
+  margin-bottom: var(--size-xxl);
+}
