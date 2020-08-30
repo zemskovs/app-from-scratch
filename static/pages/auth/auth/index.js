@@ -1,5 +1,5 @@
 import { template } from './authTemplate.js';
-import { cart } from '../components/cart.js';
+import { cart } from '../components/authCart.js';
 
 const rootClass = 'root';
 const auth = template({ cartTemplate: cart()});
