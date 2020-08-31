@@ -6,39 +6,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Профиль</title>
   <link rel="stylesheet" href="./main.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js"
+    integrity="sha512-zT3zHcFYbQwjHdKjCu6OMmETx8fJA9S7E6W7kBeFxultf75OPTYUJigEKX58qgyQMi1m1EgenfjMXlRZG8BXaw=="
+    crossorigin="anonymous"></script>
 </head>
 
 <body>
-  <div class="profile">
-    <div class="profile__body">
-      <div class="profile__top bottom-indent-xxl">
-        <div class="avatar-image profile__avatar-size bottom-indent-sm"></div>
-        <div class="profile__user-name">
-          <h3>Петр</h3>
-        </div>
-      </div>
-
-      <div class="user-main-info w-100 bottom-indent-xl">
-        <div class="user-main-info__item profile__mail bottom-indent-sm">
-          <span>Почта</span>
-          <span class="user-main-info__value">mail@pochta.ru</span>
-        </div>
-        <div class="user-main-info__item profile__user-name">
-          <span>Логин</span>
-          <span class="user-main-info__value">username</span>
-        </div>
-      </div>
-
-      <div class="profile__control-links bottom-indent-xl">
-        <a href="#">Изменить данные</a>
-        <a href="#" class="danger-link">Выйти</a>
-      </div>
-
-      <div class="profile__back-link">
-        <a href="#">Назад</a>
-      </div>
-    </div>
-  </div>
+  <div class="root"></div>
+  <!--Scripts-->
+  <script type="module" src="./scripts/index.js"></script>
 </body>
 
 </html>
