@@ -5,9 +5,9 @@ const authUserTemplate = userTemplate({
   name: 'Виктор',
   lastDate: '2 минуты назад',
 })
-const auth = template({ userTemplate: authUserTemplate});
+const chatPage = template({ userTemplate: authUserTemplate});
 
 const rootClass = 'root';
 const rootElement = document.querySelector(`.${rootClass}`);
 
-rootElement.innerHTML = auth;
+rootElement.innerHTML = chatPage;
