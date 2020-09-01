@@ -6,8 +6,8 @@ const cart = Handlebars.compile(`
       </div>
       <form class="auth-form">
         <div class="auth-form__body">
-          <input class="custom-input auth-form__item" placeholder="Введите e-mail">
-          <input class="custom-input auth-form__item" placeholder="Ввердите пароль">
+          <input class="custom-input auth-form__item emailSelector" placeholder="Введите e-mail">
+          <input class="custom-input auth-form__item passwordSelector" placeholder="Ввердите пароль" type="password">
           <div class="auth-form__footer">
             <button class="custom-button">
               Войти

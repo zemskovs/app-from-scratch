@@ -24,7 +24,7 @@
   border: none;
   border-bottom: var(--border-dashed);
   width: 100%;
-  padding: var(--size-sm) 0px;
+  padding: var(--size-sm) var(--size-sm);
 }
 
 .custom-button {
