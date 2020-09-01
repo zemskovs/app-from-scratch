@@ -6,9 +6,9 @@ const cart = Handlebars.compile(`
       </div>
       <form class="auth-form">
         <div class="auth-form__body">
-          <input class="custom-input auth-form__item" placeholder="Введите e-mail">
-          <input class="custom-input auth-form__item" placeholder="Ввердите пароль" type="password">
-          <input class="custom-input auth-form__item" placeholder="Повторите пароль" type="password">
+          <input class="custom-input auth-form__item emailSelector" placeholder="Введите e-mail" type="email">
+          <input class="custom-input auth-form__item passwordSelector" placeholder="Ввердите пароль" type="password">
+          <input class="custom-input auth-form__item repeatPasswordSelector" placeholder="Повторите пароль" type="password">
           <div class="auth-form__footer">
             <button class="custom-button">
               Регистрация
@@ -17,7 +17,7 @@ const cart = Handlebars.compile(`
         </div>
       </form>
       <div class="cart__footer">
-        <a href="#">Назад</a>
+        <a href="./index.html">Назад</a>
       </div>
     </div>
   </div>
