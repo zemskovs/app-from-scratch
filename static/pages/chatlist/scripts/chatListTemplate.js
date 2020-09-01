@@ -1,31 +1,22 @@
-<!DOCTYPE html>
-<html lang="ru">
+//todo: Сделать чаты по модели
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Список чатов</title>
-  <link rel="stylesheet" href="./main.css">
-</head>
-
-<body>
+const template = Handlebars.compile(`
   <div class="chat-list">
-    <div class="chat-list__top">
-      <div class="chat-list__header">
-        <div class="chat-list__menu">
-          <div class="menu-icon">
-            <div class="menu-icon__line"></div>
-            <div class="menu-icon__line"></div>
-            <div class="menu-icon__line menu-icon__line-last"></div>
-          </div>
-        </div>
-        <div class="search">
-          <input type="text" class="search__input" placeholder="Поиск">
+  <div class="chat-list__top">
+    <div class="chat-list__header">
+      <div class="chat-list__menu">
+        <div class="menu-icon">
+          <div class="menu-icon__line"></div>
+          <div class="menu-icon__line"></div>
+          <div class="menu-icon__line menu-icon__line-last"></div>
         </div>
       </div>
+      <div class="search">
+        <input type="text" class="search__input" placeholder="Поиск">
+      </div>
     </div>
-
-    <div class="chat-list_list">
+  </div>
+  <div class="chat-list_list">
       <div class="chat-list__item">
         <div class="chat-preview">
           <div class="user">
@@ -248,6 +239,6 @@
       </div>
     </div>
   </div>
-</body>
+`);
 
-</html>
+export { template };

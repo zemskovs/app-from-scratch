@@ -1,35 +1,19 @@
-<!DOCTYPE html>
-<html lang="ru">
+//todo: Сделать тексты по модели
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Чат</title>
-  <link rel="stylesheet" href="./main.css">
-</head>
-
-<body>
+const template = Handlebars.compile(`
   <div class="chat">
 
-    <div class="chat__top">
-      <div class="chat__header">
-        <div class="user">
-          <div class="user__img">
-            <div class="avatar-image avatar-image__header-size"></div>
-          </div>
-          <div class="user__description">
-            <h4>Андрей</h4>
-            <p class="user__caption">Был в сети 2 минуты назад</p>
-          </div>
-        </div>
-        <div class="chat__settings">
-          <div class="click-icon ellipsis" role="button"></div>
-        </div>
+  <div class="chat__top">
+    <div class="chat__header">
+      {{{userTemplate}}}
+      <div class="chat__settings">
+        <div class="click-icon ellipsis" role="button"></div>
       </div>
     </div>
+  </div>
 
-    <div class="chat__body">
-      <div class="chat__message chat__message__from">
+  <div class="chat__body">
+    <div class="chat__message chat__message__from">
         <div class="message">
           <div class="message__content message__content__from">
             <p class="message__text">
@@ -83,6 +67,7 @@
       </div>
     </div>
   </div>
+  </div>
 
   <div class="chat__bottom">
     <div class="chat__footer">
@@ -93,7 +78,6 @@
       <div class="click-icon paperPlane" role="button"></div>
     </div>
   </div>
-  </div>
-</body>
+`);
 
-</html>
+export { template };

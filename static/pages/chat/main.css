@@ -1,0 +1,8 @@
+@import '../../common/css/main.css';
+@import '../../common/css/components/avatarImage.css';
+@import '../../common/css/components/user.css';
+@import '../../common/css/components/icons.css';
+@import '../../common/css/components/indentHelpers.css';
+@import './chat.css';
+@import './sendMessageInput.css';
+@import './message.css';
