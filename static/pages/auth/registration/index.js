@@ -1,6 +1,6 @@
 import { template } from '../auth/authTemplate.js';
 import { cart } from '../components/registrationCart.js';
-import { validatePassword, validateEmail } from '../helper.js';
+import { validatePassword, validateEmail } from '../../../../utils/validations.js';
 import { inputErrorClass } from '../../../common/scripts/constants.js';
 
 const rootClass = 'root';

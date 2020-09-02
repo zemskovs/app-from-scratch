@@ -3,6 +3,7 @@
 @import '../../common/css/components/user.css';
 @import '../../common/css/components/icons.css';
 @import '../../common/css/components/indentHelpers.css';
+@import '../../common/css/components/input.css';
 @import './chat.css';
 @import './sendMessageInput.css';
 @import './message.css';

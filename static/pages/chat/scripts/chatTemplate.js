@@ -74,7 +74,7 @@ const template = Handlebars.compile(`
       <div class="right-indent-sm">
         <div class="click-icon paperclip" role="button"></div>
       </div>
-      <input type="text" placeholder="Написать сообщение..." class="send-message-input right-indent-sm">
+      <input type="text" placeholder="Написать сообщение..." class="send-message-input right-indent-sm sendMessageSelector">
       <div class="click-icon paperPlane" role="button"></div>
     </div>
   </div>

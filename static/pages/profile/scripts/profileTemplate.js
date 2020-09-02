@@ -13,11 +13,11 @@ const template = Handlebars.compile(`
     <div class="user-main-info w-100 bottom-indent-xl">
       <div class="user-main-info__item profile__mail bottom-indent-sm">
         <span>Почта</span>
-        <span class="user-main-info__value">mail@pochta.ru</span>
+        <input class="user-main-info__value emailSelector" value="mail@pochta.ru" type="email">
       </div>
       <div class="user-main-info__item profile__user-name">
-        <span>Логин</span>
-        <span class="user-main-info__value">username</span>
+        <span>Пароль</span>
+        <input class="user-main-info__value passwordSelector" type="password" placeholder="Ваш пароль">
       </div>
     </div>
 

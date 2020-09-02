@@ -3,5 +3,6 @@
 @import '../../common/css/components/indentHelpers.css';
 @import '../../common/css/components/widthHelpers.css';
 @import '../../common/css/components/links.css';
+@import '../../common/css/components/input.css';
 @import './profile.css';
 @import './userMainInfo.css';
