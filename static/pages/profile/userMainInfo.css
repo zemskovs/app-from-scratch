@@ -5,5 +5,7 @@
 }
 
 .user-main-info__value {
-  color: var(--color-caption);
+  outline: none;
+  border: none;
+  padding: 0px var(--size-sm);
 }

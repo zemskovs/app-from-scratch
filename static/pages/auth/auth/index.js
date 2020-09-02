@@ -1,48 +1,40 @@
-import { template } from './authTemplate.js';
-import { cart } from '../components/authCart.js';
-import { validatePassword, validateEmail } from '../helper.js';
-import { inputErrorClass } from '../../../common/scripts/constants.js';
-import { nav } from '../../../common/scripts/navigationManager.js';
+import { renderAuth } from './render.js';
+import { mail } from './mail.js';
+import { password } from './password.js';
 
-const rootClass = 'root';
-const auth = template({ cartTemplate: cart() });
-
-const rootElement = document.querySelector(`.${rootClass}`);
-
-rootElement.innerHTML = auth;
+renderAuth();
 
 // валидация полей
 const mailInput = document.querySelector('.emailSelector');
-const passWordInput = document.querySelector('.passwordSelector');
+const passwordInput = document.querySelector('.passwordSelector');
+const loginButton = document.querySelector('.login-button');
 
-mailInput.addEventListener('blur', (event) => {
-  const value = event.target.value;
-  const isValid = validateEmail(value);
+const mailHelper = mail(mailInput);
+const passwordHelper = password(passwordInput);
 
-  if (!isValid) {
-    event.target.classList.add(inputErrorClass);
-  }
+mailInput.addEventListener('blur', () => {
+  mailHelper.validate();
 });
 
-mailInput.addEventListener('focus', (event) => {
-  event.target.classList.remove(inputErrorClass);
+mailInput.addEventListener('focus', () => {
+  mailHelper.removeValidate();
 });
 
-passWordInput.addEventListener('blur', (event) => {
-  const value = event.target.value;
-  const isValid = validatePassword(value);
-
-  if (!isValid) {
-    event.target.classList.add(inputErrorClass);
-  }
+passwordInput.addEventListener('blur', () => {
+  passwordHelper.validate();
 });
 
-passWordInput.addEventListener('focus', (event) => {
-  event.target.classList.remove(inputErrorClass);
+passwordInput.addEventListener('focus', () => {
+  passwordHelper.removeValidate();
 });
 
 // логин
-const loginButton = document.querySelector('.login-button');
 loginButton.addEventListener('click', () => {
-  nav.toRegistration();
+  mailHelper.validate();
+  passwordHelper.validate();
+  const isValid = passwordHelper.getIsValid() && mailHelper.getIsValid();
+
+  if (isValid) {
+    console.log(mailHelper.getValue(), mailHelper.getValue());
+  }
 });

@@ -7,7 +7,7 @@ const template = Handlebars.compile(`
     <div class="chat__header">
       {{{userTemplate}}}
       <div class="chat__settings">
-        <div class="click-icon ellipsis" role="button"></div>
+        {{{chatSettingsButton}}}
       </div>
     </div>
   </div>
@@ -72,10 +72,10 @@ const template = Handlebars.compile(`
   <div class="chat__bottom">
     <div class="chat__footer">
       <div class="right-indent-sm">
-        <div class="click-icon paperclip" role="button"></div>
+        {{{attachButton}}}
       </div>
-      <input type="text" placeholder="Написать сообщение..." class="send-message-input right-indent-sm">
-      <div class="click-icon paperPlane" role="button"></div>
+      <input type="text" placeholder="Написать сообщение..." class="send-message-input right-indent-sm sendMessageSelector">
+      {{{sendButton}}}
     </div>
   </div>
 `);
