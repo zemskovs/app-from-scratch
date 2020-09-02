@@ -10,9 +10,7 @@ const cart = Handlebars.compile(`
           <input class="custom-input auth-form__item passwordSelector" placeholder="Ввердите пароль" type="password">
           <input class="custom-input auth-form__item repeatPasswordSelector" placeholder="Повторите пароль" type="password">
           <div class="auth-form__footer">
-            <button class="custom-button">
-              Регистрация
-            </button>
+            {{{loginButton}}}
           </div>
         </div>
       </form>

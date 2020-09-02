@@ -1,3 +1,5 @@
+// loginButton
+
 const cart = Handlebars.compile(`
   <div class="cart">
     <div class="cart__body">
@@ -9,9 +11,7 @@ const cart = Handlebars.compile(`
           <input class="custom-input auth-form__item emailSelector" placeholder="Введите e-mail" type="email">
           <input class="custom-input auth-form__item passwordSelector" placeholder="Ввердите пароль" type="password">
           <div class="auth-form__footer">
-            <button class="custom-button login-button">
-              Войти
-            </button>
+            {{{loginButton}}}
           </div>
         </div>
       </form>

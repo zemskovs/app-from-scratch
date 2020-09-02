@@ -1,11 +1,25 @@
 import { template } from './authTemplate.js';
+import { buttonTemplate } from '../../../common/templates/button.js';
 import { cart } from '../components/authCart.js';
-import { validatePassword, validateEmail } from '../../../../utils/validations.js';
+import {
+  validatePassword,
+  validateEmail,
+} from '../../../../utils/validations.js';
 import { inputErrorClass } from '../../../common/scripts/constants.js';
 import { nav } from '../../../common/scripts/navigationManager.js';
 
+const loginButtonTemplate = buttonTemplate({
+  largeButton: true,
+  text: 'Войти',
+  buttonClasses: 'login-button',
+});
+
 const rootClass = 'root';
-const auth = template({ cartTemplate: cart() });
+const auth = template({
+  cartTemplate: cart({
+    loginButton: loginButtonTemplate,
+  }),
+});
 
 const rootElement = document.querySelector(`.${rootClass}`);
 
