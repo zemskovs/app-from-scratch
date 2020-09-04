@@ -1,40 +1,39 @@
 import { renderAuth } from './render.js';
-import { mail } from './mail.js';
-import { password } from './password.js';
+import { mail } from '../components/mail.js';
+import { password } from '../components/password.js';
 
 renderAuth();
 
-// валидация полей
 const mailInput = document.querySelector('.emailSelector');
 const passwordInput = document.querySelector('.passwordSelector');
 const loginButton = document.querySelector('.login-button');
 
-const mailHelper = mail(mailInput);
-const passwordHelper = password(passwordInput);
+const Mail = mail(mailInput);
+const Password = password(passwordInput);
 
 mailInput.addEventListener('blur', () => {
-  mailHelper.validate();
+  Mail.validate();
 });
 
 mailInput.addEventListener('focus', () => {
-  mailHelper.removeValidate();
+  Mail.removeValidate();
 });
 
 passwordInput.addEventListener('blur', () => {
-  passwordHelper.validate();
+  Password.validate();
 });
 
 passwordInput.addEventListener('focus', () => {
-  passwordHelper.removeValidate();
+  Password.removeValidate();
 });
 
 // логин
 loginButton.addEventListener('click', () => {
-  mailHelper.validate();
-  passwordHelper.validate();
-  const isValid = passwordHelper.getIsValid() && mailHelper.getIsValid();
+  Mail.validate();
+  Password.validate();
+  const isValid = Password.getIsValid() && Mail.getIsValid();
 
   if (isValid) {
-    console.log(mailHelper.getValue(), mailHelper.getValue());
+    console.log(Mail.getValue(), Mail.getValue());
   }
 });
