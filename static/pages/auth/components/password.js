@@ -1,16 +1,15 @@
-import { validateEmail } from '../../../../utils/validations.js';
+import { validatePassword } from '../../../../utils/validations.js';
 import { inputErrorClass } from '../../../common/scripts/constants.js';
 
-export const mail = (input) => {
+export const password = (input) => {
   let isValid = false;
   let value = null;
 
   const validate = () => {
-    const inputValue = input.value;
-    const valid = validateEmail(inputValue);
-    isValid = valid;
-    value = inputValue;
-    if (!valid) {
+    value = input.value;
+    isValid = validatePassword(value);
+
+    if (!isValid) {
       input.classList.add(inputErrorClass);
     }
   };
