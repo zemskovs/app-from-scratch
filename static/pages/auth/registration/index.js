@@ -2,40 +2,42 @@ import { renderRegistration } from './render.js';
 import { mail } from '../components/mail.js';
 import { password } from '../components/password.js';
 
-const mailInput = document.querySelector('.emailSelector');
-const passwordInput = document.querySelector('.passwordSelector');
-const repeatPasswordInput = document.querySelector('.repeatPasswordSelector');
+renderRegistration();
 
-const Mail = mail(mailInput);
-const Password = password(passwordInput);
-const RepeatPassword = password(repeatPasswordInput);
+// const mailInput = document.querySelector('.emailSelector');
+// const passwordInput = document.querySelector('.passwordSelector');
+// const repeatPasswordInput = document.querySelector('.repeatPasswordSelector');
 
-mailInput.addEventListener('blur', () => {
-  Mail.validate();
-});
+// const Mail = mail(mailInput);
+// const Password = password(passwordInput);
+// const RepeatPassword = password(repeatPasswordInput);
 
-mailInput.addEventListener('focus', () => {
-  Mail.removeValidate();
-});
+// mailInput.addEventListener('blur', () => {
+//   Mail.validate();
+// });
 
-passwordInput.addEventListener('blur', (event) => {
-  Password.validate();
-});
+// mailInput.addEventListener('focus', () => {
+//   Mail.removeValidate();
+// });
 
-passwordInput.addEventListener('focus', (event) => {
-  Password.removeValidate();
-});
+// passwordInput.addEventListener('blur', (event) => {
+//   Password.validate();
+// });
 
-repeatPasswordInput.addEventListener('blur', (event) => {
-  const value = event.target.value;
-  const password = Password.getValue();
-  const isEqual = password === value;
+// passwordInput.addEventListener('focus', (event) => {
+//   Password.removeValidate();
+// });
 
-  if (!isEqual) {
-    event.target.classList.add(inputErrorClass);
-  }
-});
+// repeatPasswordInput.addEventListener('blur', (event) => {
+//   const value = event.target.value;
+//   const password = Password.getValue();
+//   const isEqual = password === value;
 
-repeatPasswordInput.addEventListener('focus', (event) => {
-  RepeatPassword.removeValidate();
-});
+//   if (!isEqual) {
+//     event.target.classList.add(inputErrorClass);
+//   }
+// });
+
+// repeatPasswordInput.addEventListener('focus', (event) => {
+//   RepeatPassword.removeValidate();
+// });

@@ -1,6 +1,8 @@
 import { template } from '../templates/loginTemplate.js';
 import { buttonTemplate } from '../../../common/templates/button.js';
 import { cart } from '../templates/registrationCart.js';
+import { render } from '../../../../templateEngine/index.js';
+import { Registration } from './Registration.js';
 
 const loginButtonTemplate = buttonTemplate({
   largeButton: true,
@@ -9,16 +11,14 @@ const loginButtonTemplate = buttonTemplate({
 });
 
 const rootClass = 'root';
-const registration = template({
-  cartTemplate: cart({
-    loginButton: loginButtonTemplate,
-  }),
-});
+// const registration = template({
+//   cartTemplate: cart({
+//     loginButton: loginButtonTemplate,
+//   }),
+// });
 
 const rootElement = document.querySelector(`.${rootClass}`);
 
-rootElement.innerHTML = registration;
-
 export const renderRegistration = () => {
-  rootElement.innerHTML = auth;
-}
+  render(Registration(), rootElement);
+};
