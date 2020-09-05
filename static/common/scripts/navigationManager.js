@@ -4,11 +4,15 @@ class NavigationManager {
   rootPath = this.origin + '/static/pages';
 
   navigate(url) {
-    window.location.assign(`${this.rootPath}${url}`);
+    window.location.href = `${this.rootPath}${url}`;
   }
 
   toRegistration() {
-    this.navigate('/auth/registration.html')
+    this.navigate('/auth/registration.html');
+  }
+
+  toChatList() {
+    this.navigate('/chatList/index.html');
   }
 }
 

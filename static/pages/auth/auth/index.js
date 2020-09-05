@@ -1,6 +1,7 @@
 import { renderAuth } from './render.js';
 import { mail } from '../components/mail.js';
 import { password } from '../components/password.js';
+import { nav } from '../../../common/scripts/navigationManager.js';
 
 renderAuth();
 
@@ -35,5 +36,6 @@ loginButton.addEventListener('click', () => {
 
   if (isValid) {
     console.log(Mail.getValue(), Mail.getValue());
+    nav.toChatList(); 
   }
 });
