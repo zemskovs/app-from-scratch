@@ -1,5 +1,8 @@
 Сбор данных с форма реализован на странице регистрации (http://localhost:4000/static/pages/auth/registration.html)
 
+Требования к email: должен быть общего формата mail@mail.ru
+Требования к паролю: не меньше 4 символов, большая и маленькая буква, цифры (qW12)
+
 ### Домен проекта:
 
 eager-almeida-befde7.netlify.app
