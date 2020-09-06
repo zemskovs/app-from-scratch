@@ -1,12 +1,12 @@
-import { template } from './errorTemplate.js';
+import { errorTemplate } from './errorTemplate.js';
+import { getRoot } from '../../../../utils/helpers.js';
 
 const errorData = {
   errorCode: '404',
   errorDescription: 'Страница не найдена',
 }
-const notFoundPage = template(errorData);
+const notFoundPage = errorTemplate(errorData);
 
-const rootClass = 'root';
-const rootElement = document.querySelector(`.${rootClass}`);
+const rootElement = getRoot();
 
 rootElement.innerHTML = notFoundPage;

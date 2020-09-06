@@ -1,13 +1,12 @@
-import { validatePassword } from '../../../../utils/validations.js';
-import { inputErrorClass } from '../../../common/scripts/constants.js';
+import { inputErrorClass } from './constants.js';
 
-export const password = (input) => {
+export const validate = (input, validator) => {
   let isValid = false;
   let value = null;
 
   const validate = () => {
     value = input.value;
-    isValid = validatePassword(value);
+    isValid = validator(value);
 
     if (!isValid) {
       input.classList.add(inputErrorClass);

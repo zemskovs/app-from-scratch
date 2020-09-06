@@ -1,7 +1,8 @@
 import { renderAuth } from './render.js';
-import { mail } from '../components/mail.js';
-import { password } from '../components/password.js';
 import { nav } from '../../../common/scripts/navigationManager.js';
+import { validate } from '../../../common/scripts/validate.js';
+import { validateEmail, validatePassword } from '../../../../utils/validations.js';
+import { addOnBlurAndOnFocus } from '../../../../utils/helpers.js';
 
 renderAuth();
 
@@ -9,23 +10,16 @@ const mailInput = document.querySelector('.emailSelector');
 const passwordInput = document.querySelector('.passwordSelector');
 const loginButton = document.querySelector('.login-button');
 
-const Mail = mail(mailInput);
-const Password = password(passwordInput);
+const Mail = validate(mailInput, validateEmail);
+const Password = validate(passwordInput, validatePassword);
 
-mailInput.addEventListener('blur', () => {
-  Mail.validate();
+addOnBlurAndOnFocus(mailInput, {
+  onBlur: Mail.validate,
+  onFocus: Mail.removeValidate,
 });
-
-mailInput.addEventListener('focus', () => {
-  Mail.removeValidate();
-});
-
-passwordInput.addEventListener('blur', () => {
-  Password.validate();
-});
-
-passwordInput.addEventListener('focus', () => {
-  Password.removeValidate();
+addOnBlurAndOnFocus(passwordInput, {
+  onBlur: Password.validate,
+  onFocus: Password.removeValidate,
 });
 
 // логин
@@ -36,6 +30,6 @@ loginButton.addEventListener('click', () => {
 
   if (isValid) {
     console.log(Mail.getValue(), Mail.getValue());
-    nav.toChatList(); 
+    nav.toChatList();
   }
 });

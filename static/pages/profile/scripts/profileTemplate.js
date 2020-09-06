@@ -1,6 +1,6 @@
 //todo: Сделать тексты по модели
 
-const template = Handlebars.compile(`
+export const profileTemplate = Handlebars.compile(`
   <div class="profile">
   <div class="profile__body">
     <div class="profile__top bottom-indent-xxl">
@@ -32,5 +32,3 @@ const template = Handlebars.compile(`
   </div>
   </div>
 `);
-
-export { template };

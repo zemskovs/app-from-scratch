@@ -1,6 +1,6 @@
 //todo: Сделать чаты по модели
 
-const template = Handlebars.compile(`
+export const chatListTemplate = Handlebars.compile(`
   <div class="chat-list">
   <div class="chat-list__top">
     <div class="chat-list__header">
@@ -240,5 +240,3 @@ const template = Handlebars.compile(`
     </div>
   </div>
 `);
-
-export { template };

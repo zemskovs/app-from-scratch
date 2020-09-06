@@ -1,47 +1,26 @@
-import { template } from './profileTemplate.js';
-import {
-  validatePassword,
-  validateEmail,
-} from '../../../../utils/validations.js';
-import { inputErrorClass } from '../../../common/scripts/constants.js';
+import { profileTemplate } from './profileTemplate.js';
+import { getRoot } from '../../../../utils/helpers.js';
+import { validateEmail, validatePassword } from '../../../../utils/validations.js';
+import { addOnBlurAndOnFocus } from '../../../../utils/helpers.js';
 
-const profilePage = template();
-
-const rootClass = 'root';
-const rootElement = document.querySelector(`.${rootClass}`);
+const profilePage = profileTemplate();
+const rootElement = getRoot();
 
 rootElement.innerHTML = profilePage;
 
 // валидация полей
 const mailInput = document.querySelector('.emailSelector');
-const passWordInput = document.querySelector('.passwordSelector');
+const passwordInput = document.querySelector('.passwordSelector');
 
-mailInput.addEventListener('blur', (event) => {
-  const value = event.target.value;
-  const isValid = validateEmail(value);
+const Mail = validate(mailInput, validateEmail);
+const Password = validate(passwordInput, validatePassword);
 
-  if (!isValid) {
-    event.target.classList.add(inputErrorClass);
-  }
+addOnBlurAndOnFocus(mailInput, {
+  onBlur: Mail.validate,
+  onFocus: Mail.removeValidate,
+});
+addOnBlurAndOnFocus(passwordInput, {
+  onBlur: Password.validate,
+  onFocus: Password.removeValidate,
 });
 
-mailInput.addEventListener('focus', (event) => {
-  event.target.classList.remove(inputErrorClass);
-});
-
-let password = null;
-const getPassword = () => password;
-
-passWordInput.addEventListener('blur', (event) => {
-  const value = event.target.value;
-  const isValid = validatePassword(value);
-  password = value;
-
-  if (!isValid) {
-    event.target.classList.add(inputErrorClass);
-  }
-});
-
-passWordInput.addEventListener('focus', (event) => {
-  event.target.classList.remove(inputErrorClass);
-});

@@ -1,7 +1,8 @@
-import { template } from './chatTemplate.js';
+import { chatTemplate } from './chatTemplate.js';
 import { userTemplate } from '../../../common/templates/user.js';
 import { inputErrorClass } from '../../../common/scripts/constants.js';
 import { buttonTemplate } from '../../../common/templates/button.js';
+import { getRoot } from '../../../../utils/helpers.js';
 
 const authUserTemplate = userTemplate({
   name: 'Виктор',
@@ -23,15 +24,15 @@ const sendButtonTemplate = buttonTemplate({
   buttonClasses: 'paperPlane',
 });
 
-const chatPage = template({
+const chatPage = chatTemplate({
   userTemplate: authUserTemplate,
   chatSettingsButton: chatSettingsButtonTemplate,
   attachButton: attachButtonTemplate,
   sendButton: sendButtonTemplate,
 });
 
-const rootClass = 'root';
-const rootElement = document.querySelector(`.${rootClass}`);
+
+const rootElement = getRoot();
 
 rootElement.innerHTML = chatPage;
 
