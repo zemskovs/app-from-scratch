@@ -1,7 +1,7 @@
 //переменные
 // cartTemplate - шаблон карты
 
-const template = Handlebars.compile(`
+const loginTemplate = Handlebars.compile(`
   <div class="auth">
   <div class="auth__body">
     {{{cartTemplate}}}
@@ -9,4 +9,4 @@ const template = Handlebars.compile(`
   </div>
 `);
 
-export { template };
+export { loginTemplate };

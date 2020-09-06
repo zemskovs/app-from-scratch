@@ -16,7 +16,7 @@
     "url": "https://github.com/zemskovs/mf.messenger.praktikum.yandex/issues"
   },
   "homepage": "https://github.com/zemskovs/mf.messenger.praktikum.yandex#readme",
-  "devDependencies": {
+  "dependencies": {
     "express": "^4.17.1"
   }
 }

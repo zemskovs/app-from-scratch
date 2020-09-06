@@ -1,6 +1,6 @@
 // принимает errorCode, errorDescription
 
-const template = Handlebars.compile(`
+export const errorTemplate = Handlebars.compile(`
   <div class="error">
   <div class="error__code">
     <h1>{{errorCode}}</h1>
@@ -13,5 +13,3 @@ const template = Handlebars.compile(`
   </div>
   </div>
 `);
-
-export { template };

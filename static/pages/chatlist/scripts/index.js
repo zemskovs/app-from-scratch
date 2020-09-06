@@ -1,9 +1,8 @@
-import { template } from './chatListTemplate.js';
-import { userTemplate } from '../../../common/templates/user.js';
+import { chatListTemplate } from './chatListTemplate.js';
+import { getRoot } from '../../../../utils/helpers.js';
 
-const chatListPage = template();
+const chatListPage = chatListTemplate();
 
-const rootClass = 'root';
-const rootElement = document.querySelector(`.${rootClass}`);
+const rootElement = getRoot();
 
 rootElement.innerHTML = chatListPage;

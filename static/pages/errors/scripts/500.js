@@ -1,12 +1,12 @@
-import { template } from './errorTemplate.js';
+import { errorTemplate } from './errorTemplate.js';
+import { getRoot } from '../../../../utils/helpers.js';
 
 const errorData = {
   errorCode: '500',
   errorDescription: 'Произошла ошибка, мы уже работаем над ней',
 }
-const serverErrorPage = template(errorData);
+const serverErrorPage = errorTemplate(errorData);
 
-const rootClass = 'root';
-const rootElement = document.querySelector(`.${rootClass}`);
+const rootElement = getRoot();
 
 rootElement.innerHTML = serverErrorPage;

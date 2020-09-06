@@ -1,6 +1,6 @@
 //todo: Сделать тексты по модели
 
-const template = Handlebars.compile(`
+export const chatTemplate = Handlebars.compile(`
   <div class="chat">
 
   <div class="chat__top">
@@ -79,5 +79,3 @@ const template = Handlebars.compile(`
     </div>
   </div>
 `);
-
-export { template };

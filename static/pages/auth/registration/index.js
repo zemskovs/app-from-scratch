@@ -1,9 +1,9 @@
 import { render } from '../../../../templateEngine/index.js';
 import { RegistrationView } from './Registration.js';
 import { Model } from '../../../../model/model.js';
+import { getRoot } from '../../../../utils/helpers.js';
 
-const rootClass = 'root';
-const rootElement = document.querySelector(`.${rootClass}`);
+const rootElement = getRoot();
 
 const initState = {
   mail: '',
