@@ -1,8 +1,29 @@
-import { renderRegistration } from './render.js';
-import { mail } from '../components/mail.js';
-import { password } from '../components/password.js';
+// import { renderRegistration } from './render.js';
+import { render } from '../../../../templateEngine/index.js';
+import { RegistrationView } from './Registration.js';
+import { Model } from '../../../../model/model.js';
+// import { mail } from '../components/mail.js';
+// import { password } from '../components/password.js';
 
-renderRegistration();
+const rootClass = 'root';
+const rootElement = document.querySelector(`.${rootClass}`);
+
+const initState = {
+  mail: '',
+  mailError: '',
+  password: '',
+  passwordError: '',
+  repeatPassword: '',
+};
+
+export const model = new Model({
+  container: rootElement,
+  initState,
+  render,
+  component: RegistrationView,
+});
+
+render(RegistrationView(), rootElement);
 
 // const mailInput = document.querySelector('.emailSelector');
 // const passwordInput = document.querySelector('.passwordSelector');

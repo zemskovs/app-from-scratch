@@ -1,6 +1,9 @@
 import { h } from '../../../../templateEngine/index.js';
+import { model } from './index.js';
 
-export const Registration = () => {
+export const RegistrationView = () => {
+  const [state, setState] = model.useState();
+
   return h(
     'div',
     { className: 'auth' },
@@ -25,10 +28,55 @@ export const Registration = () => {
               'div',
               { className: 'auth-form__body' },
               h('input', {
-                className: 'custom-input auth-form__item emailSelector',
+                className: 'custom-input auth-form__item',
                 placeholder: 'Введите e-mail',
                 type: 'email',
+                value: state.mail,
+                onInput: (e) => setState({ ...state, mail: e.target.value }),
               }),
+              h('input', {
+                className: 'custom-input auth-form__item',
+                placeholder: 'Ввердите пароль',
+                type: 'password',
+                value: state.password,
+                onInput: (e) =>
+                  setState({ ...state, password: e.target.value }),
+              }),
+              h('input', {
+                className: 'custom-input auth-form__item',
+                placeholder: 'Повторите пароль',
+                type: 'password',
+                value: state.password,
+                onInput: (e) =>
+                  setState({ ...state, repeatPassword: e.target.value }),
+              }),
+              h(
+                'div',
+                {
+                  className: 'auth-form__footer',
+                },
+                h(
+                  'div',
+                  {
+                    className: 'custom-button',
+                    role: 'button',
+                  },
+                  'Войти',
+                ),
+              ),
+            ),
+            h(
+              'div',
+              {
+                className: 'cart__footer',
+              },
+              h(
+                'a',
+                {
+                  href: './index.html',
+                },
+                'Назад',
+              ),
             ),
           ),
         ),

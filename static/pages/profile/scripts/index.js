@@ -29,13 +29,9 @@ mailInput.addEventListener('focus', (event) => {
   event.target.classList.remove(inputErrorClass);
 });
 
-let password = null;
-const getPassword = () => password;
-
 passWordInput.addEventListener('blur', (event) => {
   const value = event.target.value;
   const isValid = validatePassword(value);
-  password = value;
 
   if (!isValid) {
     event.target.classList.add(inputErrorClass);
