@@ -1,35 +1,21 @@
-import { renderAuth } from './render.js';
-import { nav } from '../../../common/scripts/navigationManager.js';
-import { validate } from '../../../common/scripts/validate.js';
-import { validateEmail, validatePassword } from '../../../../utils/validations.js';
-import { addOnBlurAndOnFocus } from '../../../../utils/helpers.js';
+import { render } from '../../../../templateEngine/index.js';
+import { RegistrationView } from './Auth.js';
+import { Model } from '../../../../model/model.js';
+import { getRoot } from '../../../../utils/helpers.js';
 
-renderAuth();
+const rootElement = getRoot();
 
-const mailInput = document.querySelector('.emailSelector');
-const passwordInput = document.querySelector('.passwordSelector');
-const loginButton = document.querySelector('.login-button');
+const initState = {
+  mail: '',
+  mailError: '',
+  password: '',
+};
 
-const Mail = validate(mailInput, validateEmail);
-const Password = validate(passwordInput, validatePassword);
-
-addOnBlurAndOnFocus(mailInput, {
-  onBlur: Mail.validate,
-  onFocus: Mail.removeValidate,
-});
-addOnBlurAndOnFocus(passwordInput, {
-  onBlur: Password.validate,
-  onFocus: Password.removeValidate,
+export const model = new Model({
+  container: rootElement,
+  initState,
+  render,
+  component: RegistrationView,
 });
 
-// логин
-loginButton.addEventListener('click', () => {
-  Mail.validate();
-  Password.validate();
-  const isValid = Password.getIsValid() && Mail.getIsValid();
-
-  if (isValid) {
-    console.log(Mail.getValue(), Mail.getValue());
-    nav.toChatList();
-  }
-});
+render(RegistrationView(), rootElement);
