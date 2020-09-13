@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+      "outDir": "./dist/",
+      "target": "es2016",
+      "declaration": false,
+      "module": "AMD",
+      "rootDirs": [
+        "src"
+      ],
+      "typeRoots": [
+        "node_modules/@types"
+      ],
+      "strictNullChecks": true,
+      "sourceMap": true,
+      "outFile": "index.js"
+   },
+   "include": [ "./src/**/*" ],
+}

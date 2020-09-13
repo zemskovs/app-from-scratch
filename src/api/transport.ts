@@ -20,7 +20,7 @@ function queryStringify(data) {
   }, '?');
 }
 
-class HTTPTransport {
+export class HTTPTransport {
   get = (url, options = {}) => {
     const reqUrl = options.data ? url + queryStringify(options.data) : url;
     return this.request(
