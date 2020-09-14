@@ -20,5 +20,8 @@
   "dependencies": {
     "express": "^4.17.1",
     "typescript": "^4.0.2"
+  },
+  "devDependencies": {
+    "postcss-cli": "^7.1.2"
   }
 }

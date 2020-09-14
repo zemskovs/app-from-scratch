@@ -4,7 +4,7 @@ import {
   validateEmail,
   validatePassword,
 } from '../../../../utils/validations.js';
-import { inputErrorClass } from '../../../common/scripts/constants.js';
+import { inputErrorClass } from '../../static/common/scripts/constants.js';
 
 const controller = {
   validateMail() {
