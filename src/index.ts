@@ -1,6 +1,5 @@
-import { app } from './app'
+import { app } from './app';
 import { render } from './modules/templateEngine/index';
 
-const root = document.querySelector(".root");
-debugger;
+const root = document.querySelector('.root');
 render(app.render(), root);
