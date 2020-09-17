@@ -1,4 +1,5 @@
 import { EventBus } from "../eventBus";
+import { render } from "../templateEngine/index";
 
 export class Block {
   static EVENTS = {
@@ -55,7 +56,7 @@ export class Block {
   }
 
   // Может переопределять пользователь, необязательно трогать
-  componentDidMount(oldProps) {}
+  componentDidMount(oldProps?) {}
 
   _componentDidUpdate(oldProps, newProps) {
     const isRerender = this.componentDidUpdate(oldProps, newProps);
@@ -87,7 +88,7 @@ export class Block {
     // Используйте шаблонизатор из npm или напиши свой безопасный
     // Нужно не в строку компилировать (или делать это правильно),
     // либо сразу в DOM-элементы превращать из возвращать из compile DOM-ноду
-    this._element.innerHTML = block;
+    render(block, this._element)
   }
 
   // Может переопределять пользователь, необязательно трогать

@@ -1,5 +1,5 @@
-import { app } from './app';
-import { render } from './modules/templateEngine/index';
+import { Router } from './modules/router/router';
+import { App } from './app';
 
-const root = document.querySelector('.root');
-render(app.render(), root);
+const router = new Router('.app');
+router.use('/auth', App)

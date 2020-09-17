@@ -1,7 +1,7 @@
 import { Block } from './modules/block/block';
 import { h } from './modules/templateEngine/index';
 
-class App extends Block {
+export class App extends Block {
   constructor(props = {}) {
     super('app', props);
   }
@@ -11,4 +11,3 @@ class App extends Block {
   }
 }
 
-export const app = new App();

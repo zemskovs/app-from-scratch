@@ -1,4 +1,6 @@
-class Router {
+import { Route } from './route';
+
+export class Router {
   constructor(rootQuery) {
     if (Router.__instance) {
       return Router.__instance;
@@ -44,7 +46,7 @@ class Router {
   }
 
   go(pathname) {
-    this.history.pushState({}, "", pathname);
+    this.history.pushState({}, '', pathname);
     this._onRoute(pathname);
   }
 
