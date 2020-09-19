@@ -83,12 +83,11 @@ export class Block {
   }
 
   _render() {
-    const block = this.render();
-    // Этот небезопасный метод для упрощения логики
-    // Используйте шаблонизатор из npm или напиши свой безопасный
-    // Нужно не в строку компилировать (или делать это правильно),
-    // либо сразу в DOM-элементы превращать из возвращать из compile DOM-ноду
-    render(block, this._element)
+    const block = this.render() ;
+    // todo: Передавать откуда то
+    const element = document.querySelector(".root");
+    // render(block, this._element)
+    render(block, element);
   }
 
   // Может переопределять пользователь, необязательно трогать

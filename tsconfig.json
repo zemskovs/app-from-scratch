@@ -6,7 +6,7 @@
     "rootDirs": ["src"],
     "typeRoots": ["node_modules/@types"],
     "strictNullChecks": true,
-    "sourceMap": true,
+    "sourceMap": false,
     "outDir": "./dist/",
     "lib": ["es5", "es6", "es7", "es2017", "dom"],
     "plugins": [{ "transform": "transformer-module", "import": "js" }]

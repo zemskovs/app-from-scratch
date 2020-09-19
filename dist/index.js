@@ -1,127 +1,25 @@
-define("modules/router/route", ["require", "exports"], function (require, exports) {
+define("modules/utils/mydash/util", ["require", "exports"], function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    exports.Route = void 0;
-    class Route {
-        constructor(pathname, view, props) {
-            this._pathname = pathname;
-            this._blockClass = view;
-            this._block = null;
-            this._props = props;
-        }
-        navigate(pathname) {
-            if (this.match(pathname)) {
-                this._pathname = pathname;
-                this.render();
-            }
-        }
-        leave() {
-            if (this._block) {
-                this._block.hide();
-            }
-        }
-        match(pathname) {
-            return isEqual(pathname, this._pathname);
-        }
-        render() {
-            if (!this._block) {
-                this._block = new this._blockClass();
-                render(this._props.rootQuery, this._block);
-                return;
-            }
-            this._block.show();
-        }
+    exports.isEqual = exports.setValue = exports.first = exports.last = void 0;
+    // Array
+    function last(list) {
+        return list[list.length > 0 ? list.length - 1 : 0];
     }
-    exports.Route = Route;
-});
-define("modules/router/router", ["require", "exports", "modules/router/route"], function (require, exports, route_1) {
-    "use strict";
-    Object.defineProperty(exports, "__esModule", { value: true });
-    exports.Router = void 0;
-    class Router {
-        constructor(rootQuery) {
-            if (Router.__instance) {
-                return Router.__instance;
-            }
-            this.routes = [];
-            this.history = window.history;
-            this._currentRoute = null;
-            this._rootQuery = rootQuery;
-            Router.__instance = this;
-        }
-        use(pathname, block) {
-            const route = new route_1.Route(pathname, block, { rootQuery: this._rootQuery });
-            this.routes.push(route);
-            return this;
-        }
-        start() {
-            this._currentRoute = this.routes[0];
-            // На смену роута вызываем перерисовку
-            window.onpopstate = (event) => {
-                this._onRoute(event.currentTarget.location.pathname);
-            };
-            this._onRoute(window.location.pathname);
-        }
-        _onRoute(pathname) {
-            const route = this.getRoute(pathname);
-            if (!route) {
-                return;
-            }
-            if (this._currentRoute) {
-                this._currentRoute.leave();
-                this._currentRoute = route;
-            }
-            route.render(route, pathname);
-        }
-        go(pathname) {
-            this.history.pushState({}, '', pathname);
-            this._onRoute(pathname);
-        }
-        back() {
-            this.history.back();
-        }
-        forward() {
-            this.history.forward();
-        }
-        getRoute(pathname) {
-            return this.routes.find((route) => route.match(pathname));
-        }
+    exports.last = last;
+    function first(list) {
+        return Array.isArray(list) ? list[0] : undefined;
     }
-    exports.Router = Router;
-});
-define("modules/eventBus", ["require", "exports"], function (require, exports) {
-    "use strict";
-    Object.defineProperty(exports, "__esModule", { value: true });
-    exports.EventBus = void 0;
-    class EventBus {
-        constructor() {
-            this.listeners = {};
-        }
-        on(event, callback) {
-            if (!this.listeners[event]) {
-                this.listeners[event] = [];
-            }
-            this.listeners[event].push(callback);
-        }
-        off(event, callback) {
-            if (!this.listeners[event]) {
-                throw new Error(`Нет события: ${event}`);
-            }
-            const idx = this.listeners[event].indexOf(callback);
-            if (idx > -1) {
-                this.listeners[event].splice(idx, 1);
-            }
-        }
-        emit(event, ...args) {
-            if (!this.listeners[event]) {
-                throw new Error(`Нет события: ${event}`);
-            }
-            this.listeners[event].forEach(function (listener) {
-                listener.apply(null, args);
-            });
-        }
+    exports.first = first;
+    function setValue(object, path, value) {
+        const keys = path.split('.'), last = keys.pop();
+        keys.reduce(function (o, k) { return o[k] = o[k] || {}; }, object)[last] = value;
     }
-    exports.EventBus = EventBus;
+    exports.setValue = setValue;
+    function isEqual(one, two) {
+        return JSON.stringify(one) === JSON.stringify(two);
+    }
+    exports.isEqual = isEqual;
 });
 define("modules/templateEngine/vdom", ["require", "exports"], function (require, exports) {
     "use strict";
@@ -308,6 +206,130 @@ define("modules/templateEngine/index", ["require", "exports", "modules/templateE
     Object.defineProperty(exports, "render", { enumerable: true, get: function () { return vdom_1.render; } });
     exports.h = vdom_1.createElement;
 });
+define("modules/router/route", ["require", "exports", "modules/utils/mydash/util"], function (require, exports, util_1) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.Route = void 0;
+    class Route {
+        constructor(pathname, view, props) {
+            this._pathname = pathname;
+            this._blockClass = view;
+            this._block = null;
+            this._props = props;
+        }
+        navigate(pathname) {
+            if (this.match(pathname)) {
+                this._pathname = pathname;
+                this.render();
+            }
+        }
+        leave() {
+            if (this._block) {
+                this._block.hide();
+            }
+        }
+        match(pathname) {
+            return util_1.isEqual(pathname, this._pathname);
+        }
+        render() {
+            if (!this._block) {
+                this._block = new this._blockClass();
+                return;
+            }
+            this._block.show();
+        }
+    }
+    exports.Route = Route;
+});
+define("modules/router/router", ["require", "exports", "modules/router/route"], function (require, exports, route_1) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.Router = void 0;
+    class Router {
+        constructor(rootQuery) {
+            if (Router.__instance) {
+                return Router.__instance;
+            }
+            this.routes = [];
+            this.history = window.history;
+            this._currentRoute = null;
+            this._rootQuery = rootQuery;
+            Router.__instance = this;
+        }
+        use(pathname, block) {
+            const route = new route_1.Route(pathname, block, { rootQuery: this._rootQuery });
+            this.routes.push(route);
+            return this;
+        }
+        start() {
+            this._currentRoute = this.routes[0];
+            // На смену роута вызываем перерисовку
+            window.onpopstate = (event) => {
+                this._onRoute(event.currentTarget.location.pathname);
+            };
+            this._onRoute(window.location.pathname);
+        }
+        _onRoute(pathname) {
+            const route = this.getRoute(pathname);
+            if (!route) {
+                return;
+            }
+            if (this._currentRoute) {
+                this._currentRoute.leave();
+                this._currentRoute = route;
+            }
+            route.render(route, pathname);
+        }
+        go(pathname) {
+            this.history.pushState({}, '', pathname);
+            this._onRoute(pathname);
+        }
+        back() {
+            this.history.back();
+        }
+        forward() {
+            this.history.forward();
+        }
+        getRoute(pathname) {
+            return this.routes.find((route) => route.match(pathname));
+        }
+    }
+    exports.Router = Router;
+});
+define("modules/eventBus", ["require", "exports"], function (require, exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.EventBus = void 0;
+    class EventBus {
+        constructor() {
+            this.listeners = {};
+        }
+        on(event, callback) {
+            if (!this.listeners[event]) {
+                this.listeners[event] = [];
+            }
+            this.listeners[event].push(callback);
+        }
+        off(event, callback) {
+            if (!this.listeners[event]) {
+                throw new Error(`Нет события: ${event}`);
+            }
+            const idx = this.listeners[event].indexOf(callback);
+            if (idx > -1) {
+                this.listeners[event].splice(idx, 1);
+            }
+        }
+        emit(event, ...args) {
+            if (!this.listeners[event]) {
+                throw new Error(`Нет события: ${event}`);
+            }
+            this.listeners[event].forEach(function (listener) {
+                listener.apply(null, args);
+            });
+        }
+    }
+    exports.EventBus = EventBus;
+});
 define("modules/block/block", ["require", "exports", "modules/eventBus", "modules/templateEngine/index"], function (require, exports, eventBus_1, index_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
@@ -373,11 +395,10 @@ define("modules/block/block", ["require", "exports", "modules/eventBus", "module
         }
         _render() {
             const block = this.render();
-            // Этот небезопасный метод для упрощения логики
-            // Используйте шаблонизатор из npm или напиши свой безопасный
-            // Нужно не в строку компилировать (или делать это правильно),
-            // либо сразу в DOM-элементы превращать из возвращать из compile DOM-ноду
-            index_1.render(block, this._element);
+            // todo: Передавать откуда то
+            const element = document.querySelector(".root");
+            // render(block, this._element)
+            index_1.render(block, element);
         }
         // Может переопределять пользователь, необязательно трогать
         render() { }
@@ -419,24 +440,23 @@ define("modules/block/block", ["require", "exports", "modules/eventBus", "module
         FLOW_CDU: "flow:component-did-update"
     };
 });
-define("app", ["require", "exports", "modules/block/block", "modules/templateEngine/index"], function (require, exports, block_1, index_2) {
+define("pages/chatList/ChatList", ["require", "exports", "modules/block/block", "modules/templateEngine/index"], function (require, exports, block_1, index_2) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    exports.App = void 0;
-    class App extends block_1.Block {
+    exports.ChatList = void 0;
+    class ChatList extends block_1.Block {
         constructor(props = {}) {
-            super('app', props);
+            super('root', props);
         }
         render() {
-            return index_2.h('div', { className: 'hel' }, 'Hello world');
+            return index_2.h('div', { className: 'chat-list' }, index_2.h('div', { className: 'chat-list__top' }, index_2.h('div', { className: 'chat-list__header' }, index_2.h('div', { className: 'menu-icon' }, index_2.h('div', { className: 'menu-icon__line' }), index_2.h('div', { className: 'menu-icon__line' }), index_2.h('div', { className: 'menu-icon__line menu-icon__line-last' })), index_2.h('div', { className: 'search' }, index_2.h('input', { className: 'search__input', placeholder: 'Поиск' })))), index_2.h('div', { className: 'chat-list_list' }));
         }
     }
-    exports.App = App;
+    exports.ChatList = ChatList;
 });
-define("index", ["require", "exports", "modules/router/router", "app"], function (require, exports, router_1, app_1) {
+define("index", ["require", "exports", "modules/router/router", "pages/chatList/ChatList"], function (require, exports, router_1, ChatList_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     const router = new router_1.Router('.app');
-    router.use('/auth', app_1.App);
+    router.use('/', ChatList_1.ChatList).start();
 });
-//# sourceMappingURL=index.js.map

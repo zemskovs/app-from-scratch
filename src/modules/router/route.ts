@@ -1,3 +1,6 @@
+import { isEqual } from '../utils/mydash/util';
+import { render } from '../templateEngine/index';
+
 export class Route {
   constructor(pathname, view, props) {
     this._pathname = pathname;
@@ -26,7 +29,6 @@ export class Route {
   render() {
     if (!this._block) {
       this._block = new this._blockClass();
-      render(this._props.rootQuery, this._block);
       return;
     }
 
