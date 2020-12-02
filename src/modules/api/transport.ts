@@ -20,8 +20,13 @@ function queryStringify(data) {
   }, '?');
 }
 
+type OptionsType = {
+  data?: any;
+  timeout?: number,
+}
+
 export class HTTPTransport {
-  get = (url, options = {}) => {
+  get = (url, options: OptionsType = {}) => {
     const reqUrl = options.data ? url + queryStringify(options.data) : url;
     return this.request(
       reqUrl,
@@ -30,7 +35,7 @@ export class HTTPTransport {
     );
   };
 
-  put = (url, options = {}) => {
+  put = (url, options: OptionsType = {}) => {
     return this.request(
       url,
       { ...options, method: METHODS.PUT },
@@ -38,7 +43,7 @@ export class HTTPTransport {
     );
   };
 
-  post = (url, options = {}) => {
+  post = (url, options: OptionsType = {}) => {
     return this.request(
       url,
       { ...options, method: METHODS.POST },
@@ -46,7 +51,7 @@ export class HTTPTransport {
     );
   };
 
-  delete = (url, options = {}) => {
+  delete = (url, options: OptionsType = {}) => {
     return this.request(
       url,
       { ...options, method: METHODS.DELETE },

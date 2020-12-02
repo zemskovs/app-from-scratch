@@ -1,6 +1,13 @@
 import { Route } from './route';
 
 export class Router {
+  routes;
+  history;
+  _currentRoute;
+  _rootQuery;
+  static __instance;
+
+
   constructor(rootQuery) {
     if (Router.__instance) {
       return Router.__instance;

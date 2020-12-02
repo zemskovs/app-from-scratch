@@ -12,6 +12,10 @@ export class Block {
   _element = null;
   _meta = null;
 
+  props;
+
+  eventBus;
+
   /** JSDoc
    * @param {string} tagName
    * @param {Object} props

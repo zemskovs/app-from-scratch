@@ -126,10 +126,10 @@ function workLoop(deadline) {
     commitRoot();
   }
 
-  requestIdleCallback(workLoop);
+  (window as any).requestIdleCallback(workLoop);
 }
 
-requestIdleCallback(workLoop);
+(window as any).requestIdleCallback(workLoop);
 
 function performUnitOfWork(fiber) {
   if (!fiber.dom) {

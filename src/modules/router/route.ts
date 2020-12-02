@@ -2,6 +2,11 @@ import { isEqual } from '../utils/mydash/util';
 import { render } from '../templateEngine/index';
 
 export class Route {
+  _pathname;
+  _blockClass;
+  _block;
+  _props;
+
   constructor(pathname, view, props) {
     this._pathname = pathname;
     this._blockClass = view;

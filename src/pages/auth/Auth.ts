@@ -1,9 +1,9 @@
-import { h } from '../../../../templateEngine/index.js';
+import { h } from '../../modules/templateEngine';
 import { model } from './index.js';
 import {
   validateEmail,
   validatePassword,
-} from '../../../../utils/validations.js';
+} from '../../modules/utils/validations';
 import { inputErrorClass } from '../../static/common/scripts/constants.js';
 
 const controller = {

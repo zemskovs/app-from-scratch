@@ -1,5 +1,8 @@
 class Model {
-  state = {};
+  state: any = {};
+  render;
+  component;
+  container;
 
   constructor({ render, component, container, initState }) {
     this.render = render;

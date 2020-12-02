@@ -31,7 +31,7 @@ export class ChatList extends Block {
           ),
         ),
       ),
-      h('div', { className: 'chat-list_list'})
+      h('div', { className: 'chat-list_list' }),
     );
   }
 }

@@ -1,7 +1,7 @@
-import { render } from '../../../../templateEngine/index.js';
+import { render } from '../../modules/templateEngine';
 import { RegistrationView } from './Registration.js';
-import { Model } from '../../../../model/model.js';
-import { getRoot } from '../../../../utils/helpers.js';
+import { Model } from '../../modules/model/model';
+import { getRoot } from '../../modules/utils/helpers';
 
 const rootElement = getRoot();
 
