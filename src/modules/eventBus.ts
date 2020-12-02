@@ -1,7 +1,5 @@
-class EventBus {
-  constructor() {
-    this.listeners = {};
-  }
+export class EventBus {
+  listeners = {}
 
   on(event, callback) {
     if (!this.listeners[event]) {

@@ -1,10 +1,10 @@
-import { h } from '../../../../templateEngine/index.js';
+import { h } from '../../modules/templateEngine';
 import { model } from './index.js';
 import {
   validateEmail,
   validatePassword,
-} from '../../../../utils/validations.js';
-import { inputErrorClass } from '../../../common/scripts/constants.js';
+} from '../../modules/utils/validations';
+import { inputErrorClass } from '../../static/common/scripts/constants.js';
 
 const controller = {
   validateMail() {
@@ -33,11 +33,27 @@ const controller = {
   focusPassword() {
     model.setState({ ...model.state, passwordError: '' });
   },
-  login() {
+  validateRepeatPassword() {
+    const isValid = model.state.password === model.state.repeatPassword;
+    if (!isValid) {
+      model.setState({
+        ...model.state,
+        repeatPasswordError: 'Пароли должны совпадать',
+      });
+    } else {
+      model.setState({ ...model.state, repeatPasswordError: '' });
+    }
+  },
+  focusRepeatPassword() {
+    model.setState({ ...model.state, repeatPasswordError: '' });
+  },
+  registration() {
     this.validateMail();
     this.validatePassword();
+    this.validateRepeatPassword();
 
     const errors = [
+      model.state.repeatPasswordError,
       model.state.passwordError,
       model.state.mailError,
     ];
@@ -47,11 +63,12 @@ const controller = {
       console.log(
         model.state.mail,
         model.state.password,
+        model.state.repeatPassword,
       );
     }
   },
 };
-controller.login = controller.login.bind(controller);
+controller.registration = controller.registration.bind(controller);
 
 
 export const RegistrationView = () => {
@@ -72,7 +89,7 @@ export const RegistrationView = () => {
           h(
             'div',
             { className: 'cart__header header' },
-            h('h1', {}, 'Вход'),
+            h('h1', {}, 'Регистрация'),
           ),
           h(
             'form',
@@ -103,6 +120,18 @@ export const RegistrationView = () => {
                 onBlur: controller.validatePassword,
                 onFocus: controller.focusPassword,
               }),
+              h('input', {
+                className: `custom-input auth-form__item ${
+                  state.repeatPasswordError ? inputErrorClass : ''
+                }`,
+                placeholder: 'Повторите пароль',
+                type: 'password',
+                value: state.repeatPassword,
+                onInput: (e) =>
+                  setState({ ...state, repeatPassword: e.target.value }),
+                onBlur: controller.validateRepeatPassword,
+                onFocus: controller.focusRepeatPassword,
+              }),
               h(
                 'div',
                 {
@@ -113,9 +142,9 @@ export const RegistrationView = () => {
                   {
                     className: 'custom-button',
                     role: 'button',
-                    onClick: controller.login
+                    onClick: controller.registration
                   },
-                  'Войти',
+                  'Регистрация',
                 ),
               ),
             ),
@@ -127,9 +156,9 @@ export const RegistrationView = () => {
               h(
                 'a',
                 {
-                  href: './registration.html',
+                  href: './index.html',
                 },
-                'Регистрация',
+                'Назад',
               ),
             ),
           ),
