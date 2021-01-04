@@ -1,0 +1,14 @@
+.menu-icon {
+  cursor: pointer;
+}
+
+.menu-icon__line {
+  width: var(--size-xxl);
+  height: 1px;
+  background-color: var(--color-dark-grey);
+  margin-bottom: var(--size-sm);
+}
+
+.menu-icon__line-last {
+  margin-bottom: 0;
+}

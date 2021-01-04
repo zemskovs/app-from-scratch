@@ -1,5 +1,5 @@
 export class EventBus {
-  listeners = {}
+  listeners = {};
 
   on(event, callback) {
     if (!this.listeners[event]) {
