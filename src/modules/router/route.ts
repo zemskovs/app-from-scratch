@@ -34,9 +34,10 @@ export class Route {
   render() {
     if (!this._block) {
       this._block = new this._blockClass();
-      return;
     }
-
+    const el = document.getElementsByClassName('app');
+    
+    render(this._block.render(), el[0])
     this._block.show();
   }
 }

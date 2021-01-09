@@ -1,0 +1,27 @@
+.click-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--size-lg);
+  width: var(--size-lg);
+  cursor: pointer;
+}
+
+.ellipsis {
+  background-image: url(../../icons/ellipsis-v-solid.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.paperPlane {
+  background-image: url(../../icons/paper-plane-solid.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+
+}
+
+.paperclip {
+  background-image: url(../../icons/paperclip-solid.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+}

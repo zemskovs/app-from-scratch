@@ -1,0 +1,25 @@
+.chat-preview {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: var(--size-sm);
+  margin-bottom: var(--size-xs);
+  cursor: pointer;
+}
+
+.chat-preview__right {
+  display: flex;
+  flex-flow: column;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.chat-preview__caption {
+  font-size: var(--font-size-caption);
+  color: var(--color-caption);
+  text-overflow: ellipsis;
+}
+
+.chat-preview__sender {
+  color: var(--color-black);
+}

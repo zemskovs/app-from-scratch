@@ -2,13 +2,11 @@ const webpack = require('webpack');
 const path = require('path');
 const CopyPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
-  .BundleAnalyzerPlugin;
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 const config = {
-  entry: './src/index.ts',
+  entry: ['./src/index.ts'],
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].[contenthash].js',
@@ -22,15 +20,18 @@ const config = {
       },
       {
         test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
+      },
+      {
+        test: /\.ttf$/,
         use: [
-          MiniCssExtractPlugin.loader,
           {
-            loader: 'css-loader',
+            loader: 'file-loader',
             options: {
-              importLoaders: 1,
+              name: './font/[hash].[ext]',
+              outputPath: 'fonts/',
             },
           },
-          'postcss-loader',
         ],
       },
       {
@@ -40,6 +41,9 @@ const config = {
       },
     ],
   },
+  devServer: {
+    contentBase: './dist',
+  },
   plugins: [
     new CopyPlugin({
       patterns: [{ from: 'src/index.html' }],
@@ -48,15 +52,14 @@ const config = {
       appMountId: 'app',
       filename: 'index.html',
     }),
-    new BundleAnalyzerPlugin({
-      analyzerMode: 'static',
-      openAnalyzer: false,
-    }),
     new MiniCssExtractPlugin(),
     new CleanWebpackPlugin(),
   ],
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
+    alias: {
+      'react-dom': '@hot-loader/react-dom',
+    },
   },
   optimization: {
     runtimeChunk: 'single',
@@ -72,4 +75,11 @@ const config = {
   },
 };
 
-module.exports = config;
+module.exports = (env, argv) => {
+  if (argv.hot) {
+    // Cannot use 'contenthash' when hot reloading is enabled.
+    config.output.filename = '[name].[hash].js';
+  }
+
+  return config;
+};
