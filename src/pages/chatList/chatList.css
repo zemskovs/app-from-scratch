@@ -15,6 +15,7 @@
 
 .chat-list__header {
   display: flex;
+  gap: var(--size-lg);
   align-items: center;
   margin-top: var(--size-xxl);
   padding-bottom: var(--size-lg);
