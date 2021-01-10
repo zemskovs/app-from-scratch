@@ -1,5 +1,5 @@
 import { render } from '../../modules/templateEngine';
-import { RegistrationView } from './Auth.js';
+import { RegistrationView } from './oldAuth.js';
 import { Model } from '../../modules/model/model.js';
 import { getRoot } from '../../modules/utils/helpers.js';
 
@@ -18,4 +18,4 @@ export const model = new Model({
   component: RegistrationView,
 });
 
-render(RegistrationView(), rootElement);
+// render(RegistrationView(), rootElement);

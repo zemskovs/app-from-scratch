@@ -1,5 +1,6 @@
 import { Router } from './modules/router/router';
 import { ChatList } from './pages/chatList/ChatList';
+import { Auth } from './pages/auth/Auth';
 
 import './styles.css';
 
@@ -13,5 +14,4 @@ const init = () => {
 init();
 
 const router = new Router('.app');
-router.use('/', ChatList);
-router.start();
+router.use('/', ChatList).use('/auth', Auth).start();

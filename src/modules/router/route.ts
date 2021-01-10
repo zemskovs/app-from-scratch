@@ -2,16 +2,18 @@ import { isEqual } from '../utils/mydash/util';
 import { render } from '../templateEngine/index';
 
 export class Route {
-  _pathname;
+  private _pathname: string;
   _blockClass;
   _block;
   _props;
+  _rootContainer;
 
-  constructor(pathname, view, props) {
+  constructor(pathname, view, rootContainer, props?) {
     this._pathname = pathname;
     this._blockClass = view;
     this._block = null;
     this._props = props;
+    this._rootContainer = rootContainer;
   }
 
   navigate(pathname) {
@@ -32,12 +34,14 @@ export class Route {
   }
 
   render() {
-    if (!this._block) {
-      this._block = new this._blockClass();
-    }
-    const el = document.getElementsByClassName('app');
-    
-    render(this._block.render(), el[0])
-    this._block.show();
+    // if (!this._block) {
+    //   this._block = new this._blockClass();
+    // }
+
+    // if (typeof this._block.render === 'function') {
+    //   render(this._block.render(), el[0]);
+    //   return;
+    // }
+    render(this._blockClass(), this._rootContainer);
   }
 }
