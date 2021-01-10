@@ -43,5 +43,4 @@ export class Route {
     //   return;
     // }
     render(this._blockClass(), this._rootContainer);
-  }
 }
