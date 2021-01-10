@@ -1,27 +1,28 @@
 import { Route } from './route'
 
 export class Router {
-  routes
-  history
-  _currentRoute
-  _rootQuery
-  static __instance
+  routes;
+  history;
+  _currentRoute;
+  _rootContainer;
+  static __instance;
 
-  constructor (rootQuery) {
+  constructor(rootQuery) {
     if (Router.__instance) {
       return Router.__instance
     }
 
-    this.routes = []
-    this.history = window.history
-    this._currentRoute = null
-    this._rootQuery = rootQuery
+    this.routes = [];
+    this.history = window.history;
+    this._currentRoute = null;
+    this._rootContainer = document.querySelector(rootQuery);
 
     Router.__instance = this
   }
 
-  use (pathname, block) {
-    const route = new Route(pathname, block, { rootQuery: this._rootQuery })
+
+  use(pathname, block) {
+    const route = new Route(pathname, block, this._rootContainer);
 
     this.routes.push(route)
 

@@ -1,12 +1,12 @@
-import { EventBus } from "../eventBus";
-import { render } from "../templateEngine/index";
+import { EventBus } from '../eventBus';
+import { render } from '../templateEngine/index';
 
 export class Block {
   static EVENTS = {
-    INIT: "init",
-    FLOW_CDM: "flow:component-did-mount",
-    FLOW_RENDER: "flow:render",
-    FLOW_CDU: "flow:component-did-update"
+    INIT: 'init',
+    FLOW_CDM: 'flow:component-did-mount',
+    FLOW_RENDER: 'flow:render',
+    FLOW_CDU: 'flow:component-did-update',
   };
 
   _element = null;
@@ -22,11 +22,11 @@ export class Block {
    *
    * @returns {void}
    */
-  constructor(tagName = "div", props = {}) {
+  constructor(tagName = 'div', props = {}) {
     const eventBus = new EventBus();
     this._meta = {
       tagName,
-      props
+      props,
     };
 
     this.props = this._makePropsProxy(props);
@@ -87,11 +87,11 @@ export class Block {
   }
 
   _render() {
-    const block = this.render() ;
+    const block = this.render();
     // todo: Передавать откуда то
-    const element = document.querySelector(".root");
+    const element = document.querySelector('.root');
     // render(block, this._element)
-    render(block, element);
+    // render(block, element);
   }
 
   // Может переопределять пользователь, необязательно трогать
@@ -113,8 +113,8 @@ export class Block {
         return true;
       },
       deleteProperty() {
-        throw new Error("Отказано в доступе");
-      }
+        throw new Error('Отказано в доступе');
+      },
     });
     return proxyData;
   }
@@ -125,10 +125,10 @@ export class Block {
   }
 
   show() {
-    this.getContent().style.display = "block";
+    this.getContent().style.display = 'block';
   }
 
   hide() {
-    this.getContent().style.display = "none";
+    this.getContent().style.display = 'none';
   }
 }

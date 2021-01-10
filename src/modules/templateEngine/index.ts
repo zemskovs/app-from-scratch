@@ -1,4 +1,4 @@
-import { createElement, render } from './vdom';
+import { createElement, render, useState, useEffect } from './vdom';
 
 export const h = createElement;
-export { render };
+export { render, useState, useEffect };

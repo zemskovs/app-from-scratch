@@ -20,4 +20,4 @@ export const model = new Model({
   component: RegistrationView,
 });
 
-render(RegistrationView(), rootElement);
+// render(RegistrationView(), rootElement);
