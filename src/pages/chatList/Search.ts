@@ -1,7 +1,7 @@
 import { h, useState, useEffect } from '../../modules/templateEngine/index';
 
 export function Search(props?) {
-  const [state, setState] = useState('32');
+  const [state, setState] = useState('');
 
   const handleSearch = (e) =>
     setState(() => {

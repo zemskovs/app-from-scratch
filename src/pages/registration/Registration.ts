@@ -1,79 +1,6 @@
-import { h } from '../../modules/templateEngine';
-import { model } from './index.js';
-import {
-  validateEmail,
-  validatePassword,
-} from '../../modules/utils/validations';
-import { inputErrorClass } from '../../static/common/scripts/constants.js';
-
-const controller = {
-  validateMail() {
-    const isValid = validateEmail(model.state.mail);
-    if (!isValid) {
-      model.setState({ ...model.state, mailError: 'Введите корректную почту' });
-    } else {
-      model.setState({ ...model.state, mailError: '' });
-    }
-  },
-  focusMail() {
-    model.setState({ ...model.state, mailError: '' });
-  },
-  validatePassword() {
-    const isValid = validatePassword(model.state.password);
-    if (!isValid) {
-      model.setState({
-        ...model.state,
-        passwordError:
-          'Пароль должен быть длинее 4 символов, содержать маленькие и большие буквы, а также цифры',
-      });
-    } else {
-      model.setState({ ...model.state, passwordError: '' });
-    }
-  },
-  focusPassword() {
-    model.setState({ ...model.state, passwordError: '' });
-  },
-  validateRepeatPassword() {
-    const isValid = model.state.password === model.state.repeatPassword;
-    if (!isValid) {
-      model.setState({
-        ...model.state,
-        repeatPasswordError: 'Пароли должны совпадать',
-      });
-    } else {
-      model.setState({ ...model.state, repeatPasswordError: '' });
-    }
-  },
-  focusRepeatPassword() {
-    model.setState({ ...model.state, repeatPasswordError: '' });
-  },
-  registration() {
-    this.validateMail();
-    this.validatePassword();
-    this.validateRepeatPassword();
-
-    const errors = [
-      model.state.repeatPasswordError,
-      model.state.passwordError,
-      model.state.mailError,
-    ];
-    const noErrors = errors.every((el) => el.length === 0);
-
-    if (noErrors) {
-      console.log(
-        model.state.mail,
-        model.state.password,
-        model.state.repeatPassword,
-      );
-    }
-  },
-};
-controller.registration = controller.registration.bind(controller);
-
+import { h } from '../../modules/templateEngine/index';
 
 export const RegistrationView = () => {
-  const [state, setState] = model.useState();
-
   return h(
     'div',
     { className: 'auth' },
@@ -98,39 +25,33 @@ export const RegistrationView = () => {
               'div',
               { className: 'auth-form__body' },
               h('input', {
-                className: `custom-input auth-form__item ${
-                  state.mailError ? inputErrorClass : ''
-                }`,
+                className: `custom-input auth-form__item `,
                 placeholder: 'Введите e-mail',
                 type: 'email',
-                value: state.mail,
-                onInput: (e) => setState({ ...state, mail: e.target.value }),
-                onBlur: controller.validateMail,
-                onFocus: controller.focusMail,
+                //   value: state.mail,
+                //   onInput: (e) => setState({ ...state, mail: e.target.value }),
+                //   onBlur: controller.validateMail,
+                //   onFocus: controller.focusMail,
               }),
               h('input', {
-                className: `custom-input auth-form__item ${
-                  state.passwordError ? inputErrorClass : ''
-                }`,
+                className: `custom-input auth-form__item`,
                 placeholder: 'Ввердите пароль',
                 type: 'password',
-                value: state.password,
-                onInput: (e) =>
-                  setState({ ...state, password: e.target.value }),
-                onBlur: controller.validatePassword,
-                onFocus: controller.focusPassword,
+                //   value: state.password,
+                //   onInput: (e) =>
+                // setState({ ...state, password: e.target.value }),
+                //   onBlur: controller.validatePassword,
+                //   onFocus: controller.focusPassword,
               }),
               h('input', {
-                className: `custom-input auth-form__item ${
-                  state.repeatPasswordError ? inputErrorClass : ''
-                }`,
+                className: `custom-input auth-form__item `,
                 placeholder: 'Повторите пароль',
                 type: 'password',
-                value: state.repeatPassword,
-                onInput: (e) =>
-                  setState({ ...state, repeatPassword: e.target.value }),
-                onBlur: controller.validateRepeatPassword,
-                onFocus: controller.focusRepeatPassword,
+                //   value: state.repeatPassword,
+                //   onInput: (e) =>
+                // 	setState({ ...state, repeatPassword: e.target.value }),
+                //   onBlur: controller.validateRepeatPassword,
+                //   onFocus: controller.focusRepeatPassword,
               }),
               h(
                 'div',
@@ -142,7 +63,7 @@ export const RegistrationView = () => {
                   {
                     className: 'custom-button',
                     role: 'button',
-                    onClick: controller.registration
+                    //   onClick: controller.registration
                   },
                   'Регистрация',
                 ),

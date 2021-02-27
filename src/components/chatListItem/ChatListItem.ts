@@ -6,15 +6,17 @@ type Message = {
   from: 'you' | 'anotherUser';
 };
 
-type User = {
+export type User = {
   id: number;
   imgSrc: string;
   name: string;
   lastMessage: Message;
 };
 
-export const ChatListItem = (props: User) =>
-  h(
+export const ChatListItem = (data: { props: User }) => {
+  const props = data.props;
+
+  return h(
     'div',
     { className: 'chat-list__item' },
     h(
@@ -24,12 +26,22 @@ export const ChatListItem = (props: User) =>
         'div',
         { className: 'user' },
         h('div', { className: 'user__img' }),
-        h('div', { className: 'user__description'},
+        h(
+          'div',
+          { className: 'user__description' },
           h('h4', {}, props.name),
-          h('p', { className: 'user__caption' }, 
-            h('span', { className: 'chat-preview__sender' })
-          )
+          h(
+            'p',
+            { className: 'user__caption' },
+            h(
+              'span',
+              { className: 'chat-preview__sender' },
+              props.lastMessage.from === 'you' ? 'Вы: ' : '',
+            ),
+            h('span', {}, props.lastMessage.message),
+          ),
         ),
       ),
     ),
   );
+};
