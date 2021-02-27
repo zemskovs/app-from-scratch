@@ -1,6 +1,12 @@
+import { router } from '../..';
 import { h } from '../../modules/templateEngine/index';
 
 export const Profile = () => {
+  const handleBack = (event: Event) => {
+    event.preventDefault();
+    router.back();
+  };
+
   return h(
     'div',
     { className: 'profile' },
@@ -52,7 +58,7 @@ export const Profile = () => {
       h(
         'div',
         { className: 'profile__back-link' },
-        h('a', { href: '#' }, 'Назад'),
+        h('a', { href: '#', onClick: handleBack }, 'Назад'),
       ),
     ),
   );
