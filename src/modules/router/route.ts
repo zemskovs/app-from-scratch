@@ -1,17 +1,17 @@
 import { isEqual } from '../utils/mydash/util';
-import { render } from '../templateEngine/index';
+import { Block } from '../block/block';
 
 export class Route {
   private _pathname: string;
   _blockClass;
-  _block;
+  _block: Block;
   _props;
   _rootContainer;
 
   constructor(pathname, view, rootContainer, props?) {
     this._pathname = pathname;
     this._blockClass = view;
-    this._block = null;
+    this._block = new Block(view, rootContainer);
     this._props = props;
     this._rootContainer = rootContainer;
   }
@@ -34,14 +34,6 @@ export class Route {
   }
 
   render() {
-    // if (!this._block) {
-    //   this._block = new this._blockClass();
-    // }
-
-    // if (typeof this._block.render === 'function') {
-    //   render(this._block.render(), el[0]);
-    //   return;
-    // }
-    render(this._blockClass(), this._rootContainer);
+    this._block.show();
   }
 }

@@ -1,6 +1,12 @@
+import { router } from '../..';
 import { h } from '../../modules/templateEngine/index';
 
-export const RegistrationView = () => {
+export const Registration = () => {
+  const handleBack = (event: Event) => {
+    event.preventDefault();
+    router.back();
+  };
+
   return h(
     'div',
     { className: 'auth' },
@@ -77,7 +83,8 @@ export const RegistrationView = () => {
               h(
                 'a',
                 {
-                  href: './index.html',
+                  href: '#',
+                  onClick: handleBack,
                 },
                 'Назад',
               ),

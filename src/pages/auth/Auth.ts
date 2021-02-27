@@ -1,6 +1,16 @@
+import { pages, router } from '../..';
 import { h } from '../../modules/templateEngine/index';
 
 export function Auth() {
+  const handleCome = () => {
+    router.go(pages.chatlist);
+  };
+
+  const handleRegistration = (event: Event) => {
+    event.preventDefault();
+    router.go(pages.registration);
+  };
+
   return h(
     'div',
     { className: 'auth' },
@@ -40,6 +50,8 @@ export function Auth() {
                   {
                     className: 'custom-button',
                     role: 'button',
+                    tabIndex: 1,
+                    onClick: handleCome,
                   },
                   'Войти',
                 ),
@@ -53,7 +65,8 @@ export function Auth() {
               h(
                 'a',
                 {
-                  href: './registration.html',
+                  href: '#',
+                  onClick: handleRegistration,
                 },
                 'Регистрация',
               ),
