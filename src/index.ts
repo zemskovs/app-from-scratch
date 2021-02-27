@@ -14,4 +14,4 @@ const init = () => {
 init();
 
 const router = new Router('.app');
-router.use('/', ChatList).use('/auth', Auth).start();
+router.use('/', Auth).use('/chatlist', ChatList).start();
