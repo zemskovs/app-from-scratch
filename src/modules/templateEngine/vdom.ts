@@ -314,4 +314,13 @@ function reconcileChildren(wipFiber, elements) {
   }
 }
 
-export { createElement, render, useState, useEffect };
+function force() {
+  nextUnitOfWork = null;
+  currentRoot = null;
+  wipRoot = null;
+  deletions = null;
+  wipFiber = null;
+  hookIndex = null;
+}
+
+export { createElement, render, useState, useEffect, force };

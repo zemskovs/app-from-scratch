@@ -19,11 +19,20 @@ const init = () => {
 init();
 
 export const router = new Router(`.${appRoot}`);
+export const pages = {
+  page404: '/404',
+  page500: '/500',
+  auth: '/',
+  registration: '/registration',
+  chatlist: '/chatlist',
+  profile: '/profile',
+};
+
 router
-  .use('/404', Page404)
-  .use('/500', Page500)
-  .use('/auth', Auth)
-  .use('/registration', Registration)
-  .use('/chatlist', ChatList)
-  .use('/', Profile)
+  .use(pages.page404, Page404)
+  .use(pages.page500, Page500)
+  .use(pages.auth, Auth)
+  .use(pages.registration, Registration)
+  .use(pages.chatlist, ChatList)
+  .use(pages.profile, Profile)
   .start();
