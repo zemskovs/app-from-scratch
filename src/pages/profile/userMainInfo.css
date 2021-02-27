@@ -1,0 +1,11 @@
+.user-main-info__item {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.user-main-info__value {
+  outline: none;
+  border: none;
+  padding: 0px var(--size-sm);
+}

@@ -1,6 +1,6 @@
 import { h } from '../../modules/templateEngine/index';
 
-export const RegistrationView = () => {
+export const Registration = () => {
   return h(
     'div',
     { className: 'auth' },
